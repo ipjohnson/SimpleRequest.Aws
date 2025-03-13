@@ -10,6 +10,5 @@ namespace SimpleRequest.Aws.Host.Sqs.Serializer;
 [JsonSerializable(typeof(SQSEvent.SQSMessage))]
 [JsonSerializable(typeof(SQSEvent.MessageAttribute))]
 [JsonSerializable(typeof(SQSBatchResponse))]
-[JsonSerializable(typeof(SQSBatchResponse.BatchItemFailure))]
 [TransientService(Key = SerializerConstants.AwsKey)]
 public partial class SqsSerializerContext : JsonSerializerContext;
