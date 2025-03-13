@@ -10,10 +10,10 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <None Include="..\..\README.md" Pack="true" PackagePath="">
+        <None Include="..\..\..\README.md" Pack="true" PackagePath="">
             <Link>Properties\README.md</Link>
         </None>
-        <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="">
+        <None Include="..\..\..\LICENSE.txt" Pack="true" PackagePath="">
             <Link>Properties\License.txt</Link>
         </None>
     </ItemGroup>
