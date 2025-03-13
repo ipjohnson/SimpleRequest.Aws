@@ -12,7 +12,7 @@ assembly_info:
 before_build:
  - cmd: nuget restore SimpleRequest.Aws.sln
 build:
-  project: SimpleRequest.sln
+  project: SimpleRequest.Aws.sln
   publish_nuget: true
   verbosity: minimal
 test:
@@ -20,7 +20,7 @@ test:
     only:
       - '**\*.tests.dll'
 artifacts:
-- path: src\**\SimpleRequest*.nupkg
+- path: src\**\SimpleRequest.Aws.*.nupkg
   name: SimpleRequest
 image:
 - Visual Studio 2022
