@@ -5,10 +5,8 @@ using SimpleRequest.Runtime.Attributes;
 
 namespace SimpleRequest.Aws.Lambda.DdbStream;
 
+public partial class DdbStreamLambdaAttribute : ILambdaHostAttribute, ISimpleRequestEntryAttribute;
+
 [DependencyModule]
-[LambdaHost.Attribute]
-public partial class DdbStreamLambda {
-    public partial class Attribute : ILambdaHostAttribute, ISimpleRequestEntryAttribute {
-        
-    }
-}
+[LambdaHost]
+public partial class DdbStreamLambda;

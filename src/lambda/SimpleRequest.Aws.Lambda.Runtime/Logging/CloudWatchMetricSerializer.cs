@@ -1,11 +1,11 @@
 using System.Collections.Immutable;
 using System.Text;
 using System.Text.Json;
-using CompiledTemplateEngine.Runtime.Utilities;
 using DependencyModules.Runtime.Attributes;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Lambda.Runtime.Context;
 using SimpleRequest.Runtime.Logging;
+using SimpleRequest.Runtime.Pools;
 
 namespace SimpleRequest.Aws.Lambda.Runtime.Logging;
 

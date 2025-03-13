@@ -1,12 +1,11 @@
-using CompiledTemplateEngine.Runtime.Utilities;
 using Microsoft.Extensions.Logging;
 using SimpleRequest.Aws.Lambda.Runtime.Context;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Runtime.Logging;
+using SimpleRequest.Runtime.Pools;
 using SimpleRequest.Runtime.Serializers.Json;
 
 namespace SimpleRequest.Aws.Lambda.Runtime.Logging;
-
 
 public class LambdaStructuredLogger : ILogger {
     private readonly ILambdaContextAccessor _lambdaContextAccessor;

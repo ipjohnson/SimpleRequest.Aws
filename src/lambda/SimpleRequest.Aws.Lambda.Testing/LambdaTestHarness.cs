@@ -1,12 +1,12 @@
 using System.Reflection;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.RuntimeSupport;
-using CompiledTemplateEngine.Runtime.Utilities;
 using Microsoft.Extensions.Primitives;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Aws.Lambda.Testing.Context;
 using SimpleRequest.Runtime.Invoke.Impl;
+using SimpleRequest.Runtime.Pools;
 using SimpleRequest.Runtime.Serializers;
 using SimpleRequest.Runtime.Serializers.Json;
 using SimpleRequest.Testing;

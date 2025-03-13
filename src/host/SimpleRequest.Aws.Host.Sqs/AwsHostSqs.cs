@@ -4,5 +4,5 @@ using SimpleRequest.Aws.Host.Runtime;
 namespace SimpleRequest.Aws.Host.Sqs;
 
 [DependencyModule]
-[AwsHostRuntime.Attribute]
+[AwsHostRuntime]
 public partial class AwsHostSqs;

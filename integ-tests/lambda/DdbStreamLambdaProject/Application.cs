@@ -5,6 +5,6 @@ using SimpleRequest.Runtime;
 namespace DdbStreamLambdaProject;
 
 [DependencyModule]
-[DdbStreamLambda.Attribute]
-[EnhancedLoggingSupport.Attribute]
+[DdbStreamLambda]
+[EnhancedLoggingSupport]
 public partial class Application;

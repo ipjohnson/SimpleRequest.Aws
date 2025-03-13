@@ -3,4 +3,4 @@
 namespace SimpleRequest.Aws.Host.Runtime;
 
 [DependencyModule]
-public partial class AwsHostRuntime { }
+public partial class AwsHostRuntime;

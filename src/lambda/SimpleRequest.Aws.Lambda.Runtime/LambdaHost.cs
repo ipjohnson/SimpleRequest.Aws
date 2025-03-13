@@ -8,8 +8,11 @@ using SimpleRequest.Runtime.Attributes;
 
 namespace SimpleRequest.Aws.Lambda.Runtime;
 
+
+public partial class LambdaHostAttribute : ILambdaHostAttribute, ISimpleRequestEntryAttribute;
+
 [DependencyModule]
-[SimpleRequestRuntime.Attribute]
+[SimpleRequestRuntime]
 public partial class LambdaHost {
     public static void Run<T>() where T : IDependencyModule, new() {
         Run(new T());
@@ -21,6 +24,4 @@ public partial class LambdaHost {
         
         asyncResult.Wait();
     }
-    
-    public partial class Attribute : ILambdaHostAttribute, ISimpleRequestEntryAttribute { }
 }

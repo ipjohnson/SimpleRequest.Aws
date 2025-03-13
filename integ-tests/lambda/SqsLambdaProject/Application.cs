@@ -5,6 +5,6 @@ using SimpleRequest.Runtime;
 namespace SqsLambdaProject;
 
 [DependencyModule]
-[SqsLambda.Attribute]
-[EnhancedLoggingSupport.Attribute]
+[SqsLambda]
+[EnhancedLoggingSupport]
 public partial class Application;

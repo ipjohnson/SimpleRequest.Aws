@@ -6,11 +6,9 @@ using SimpleRequest.Runtime.Attributes;
 
 namespace SimpleRequest.Aws.Lambda.Sqs;
 
+public partial class SqsLambdaAttribute : ILambdaHostAttribute, ISimpleRequestEntryAttribute;
+
 [DependencyModule]
-[LambdaHost.Attribute]
-[AwsHostSqs.Attribute]
-public partial class SqsLambda {
-    public partial class Attribute : ILambdaHostAttribute, ISimpleRequestEntryAttribute {
-        
-    }
-}
+[LambdaHost]
+[AwsHostSqs]
+public partial class SqsLambda;

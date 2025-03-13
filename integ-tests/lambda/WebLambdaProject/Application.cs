@@ -6,7 +6,6 @@ using SimpleRequest.Web.Runtime;
 namespace WebLambdaProject;
 
 [DependencyModule]
-[SimpleRequestWeb.Attribute]
-[WebLambda.Attribute]
-[EnhancedLoggingSupport.Attribute]
+[WebLambda]
+[EnhancedLoggingSupport]
 public partial class Application;
