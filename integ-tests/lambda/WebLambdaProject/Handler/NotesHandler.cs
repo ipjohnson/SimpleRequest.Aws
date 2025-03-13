@@ -1,8 +1,7 @@
 using SimpleRequest.Web.Runtime.Attributes;
+using WebLambdaProject.Models;
 
 namespace WebLambdaProject.Handler;
-
-public record NotesModel(int Id, string Text);
 
 public class NotesHandler {
     [Get("/notes")]

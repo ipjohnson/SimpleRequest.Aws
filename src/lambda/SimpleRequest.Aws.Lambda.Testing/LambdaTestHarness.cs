@@ -3,16 +3,18 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.RuntimeSupport;
 using CompiledTemplateEngine.Runtime.Utilities;
 using Microsoft.Extensions.Primitives;
+using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Aws.Lambda.Testing.Context;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Serializers;
+using SimpleRequest.Runtime.Serializers.Json;
 using SimpleRequest.Testing;
 
 namespace SimpleRequest.Aws.Lambda.Testing;
 
 public class LambdaHarness(
-    IJsonSerializer jsonSerializer,
+    IAwsJsonSerializerOptions options,
     IServiceProvider serviceProvider,
     ILambdaInvocationHandler handler,
     IMemoryStreamPool memoryStreamPool,
@@ -21,6 +23,7 @@ public class LambdaHarness(
         typeof(InvocationRequest).GetConstructor( BindingFlags.NonPublic | BindingFlags.Instance, Array.Empty<Type>());
     private static PropertyInfo? _context = typeof(InvocationRequest).GetProperty("LambdaContext");
     private static PropertyInfo? _inputStream = typeof(InvocationRequest).GetProperty("InputStream");
+    private SystemTextJsonSerializer _serializer = new (options.Options);
     
     public IServiceProvider ServiceProvider => serviceProvider;
 
@@ -64,7 +67,7 @@ public class LambdaHarness(
     }
 
     private async Task Serialize(object payload, IPoolItemReservation<MemoryStream> memoryStream) {
-        await jsonSerializer.Serialize(memoryStream.Item, payload);
+        await _serializer.Serialize(memoryStream.Item, payload);
         memoryStream.Item.Position = 0;
     }
 }

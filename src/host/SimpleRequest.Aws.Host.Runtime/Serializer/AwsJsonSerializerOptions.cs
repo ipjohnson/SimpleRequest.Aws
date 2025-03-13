@@ -6,7 +6,7 @@ using Amazon.Lambda.Serialization.SystemTextJson.Converters;
 using DependencyModules.Runtime.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SimpleRequest.Aws.Lambda.Runtime.Serializer;
+namespace SimpleRequest.Aws.Host.Runtime.Serializer;
 
 public interface IAwsJsonSerializerOptions {
     JsonSerializerOptions Options { get; }
@@ -16,11 +16,10 @@ public interface IAwsJsonSerializerOptions {
 public class AwsJsonSerializerOptions([FromKeyedServices(SerializerConstants.AwsKey)] IEnumerable<IJsonTypeInfoResolver> providers) : IAwsJsonSerializerOptions {
     private JsonSerializerOptions? _options;
     
-    
-    
     public JsonSerializerOptions Options => _options ??= DefaultOptions(providers);
     
-    public static JsonSerializerOptions DefaultOptions(IEnumerable<IJsonTypeInfoResolver> providers) => new JsonSerializerOptions {
+    public static JsonSerializerOptions DefaultOptions(IEnumerable<IJsonTypeInfoResolver> providers) => 
+        new JsonSerializerOptions {
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         PropertyNameCaseInsensitive = true,
         PropertyNamingPolicy = new AwsNamingPolicy(),

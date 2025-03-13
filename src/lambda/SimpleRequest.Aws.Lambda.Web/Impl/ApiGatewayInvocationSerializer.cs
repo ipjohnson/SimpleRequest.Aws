@@ -5,7 +5,7 @@ using Amazon.Lambda.RuntimeSupport;
 using DependencyModules.Runtime.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
-using SimpleRequest.Aws.Lambda.Runtime.Serializer;
+using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Runtime.Invoke;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Logging;

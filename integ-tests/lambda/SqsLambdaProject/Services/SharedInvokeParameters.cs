@@ -7,7 +7,7 @@ public interface ISharedInvokeParameters {
     void Add(params object[] parameters);
     
     IReadOnlyList<object[]> ParameterSets { get; }
-} 
+}
 
 [SingletonService]
 public class SharedInvokeParameters : ISharedInvokeParameters {

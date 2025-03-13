@@ -1,6 +1,6 @@
 using Amazon.Lambda.SQSEvents;
 using Microsoft.Extensions.DependencyInjection;
-using SimpleRequest.Runtime.Serializers;
+using SimpleRequest.Runtime.Serializers.Json;
 using SimpleRequest.Testing;
 
 namespace SimpleRequest.Aws.Lambda.Testing.Extensions;

@@ -15,13 +15,4 @@
         <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1043" />
         <PackageReference Include="SimpleRequest.SourceGenerator" Version="1.0.0-Beta1043" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Attributes\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\host\SimpleRequest.Aws.Host.Runtime\SimpleRequest.Aws.Host.Runtime.csproj" />
-    </ItemGroup>
-
 </Project>

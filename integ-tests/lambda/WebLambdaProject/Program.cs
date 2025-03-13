@@ -1,3 +1,4 @@
-﻿using WebLambdaProject;
+﻿using SimpleRequest.Aws.Lambda.Runtime;
+using WebLambdaProject;
 
-await WebApp.RunAsync();
+LambdaHost.Run<Application>();

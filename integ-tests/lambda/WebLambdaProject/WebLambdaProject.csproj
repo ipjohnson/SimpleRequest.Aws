@@ -13,8 +13,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1037" />
-      <PackageReference Include="SimpleRequest.Web.SourceGenerator" Version="1.0.0-Beta1037" />
+      <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1043" />
+      <PackageReference Include="SimpleRequest.Web.SourceGenerator" Version="1.0.0-Beta1043" />
     </ItemGroup>
 
 </Project>

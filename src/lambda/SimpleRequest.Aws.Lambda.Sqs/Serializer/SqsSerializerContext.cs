@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 using Amazon.Lambda.SQSEvents;
+using DependencyModules.Runtime.Attributes;
+using SimpleRequest.Aws.Host.Runtime.Serializer;
 
 namespace SimpleRequest.Aws.Lambda.Sqs.Serializer;
 
@@ -9,6 +11,5 @@ namespace SimpleRequest.Aws.Lambda.Sqs.Serializer;
 [JsonSerializable(typeof(SQSEvent.MessageAttribute))]
 [JsonSerializable(typeof(SQSBatchResponse))]
 [JsonSerializable(typeof(SQSBatchResponse.BatchItemFailure))]
-public partial class SqsSerializerContext : JsonSerializerContext {
-    
-}
+[TransientService(Key = SerializerConstants.AwsKey)]
+public partial class SqsSerializerContext : JsonSerializerContext;

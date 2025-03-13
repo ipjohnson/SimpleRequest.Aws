@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using SimpleRequest.Aws.Lambda.Runtime.Context;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Runtime.Logging;
-using SimpleRequest.Runtime.Serializers;
+using SimpleRequest.Runtime.Serializers.Json;
 
 namespace SimpleRequest.Aws.Lambda.Runtime.Logging;
 

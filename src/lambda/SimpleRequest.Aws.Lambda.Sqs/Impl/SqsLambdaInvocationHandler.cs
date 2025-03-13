@@ -9,7 +9,7 @@ using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Runtime.Invoke;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Logging;
-using SimpleRequest.Runtime.Serializers;
+using SimpleRequest.Runtime.Serializers.Json;
 
 namespace SimpleRequest.Aws.Lambda.Sqs.Impl;
 

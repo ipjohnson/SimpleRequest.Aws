@@ -14,12 +14,16 @@ public class LambdaContextToHeaderMapper : ILambdaContextToHeaderMapper {
     public IDictionary<string, StringValues> GetHeaders(ILambdaContext lambdaContext) {
         var dictionary = new Dictionary<string, StringValues>();
 
-        foreach (var kvp in lambdaContext.ClientContext.Custom) {
-            dictionary[kvp.Key] = kvp.Value;
+        if (lambdaContext.ClientContext?.Custom != null) {
+            foreach (var kvp in lambdaContext.ClientContext.Custom) {
+                dictionary[kvp.Key] = kvp.Value;
+            }
         }
         
-        foreach (var kvp in lambdaContext.ClientContext.Environment) {
-            dictionary[kvp.Key] = kvp.Value;
+        if (lambdaContext.ClientContext?.Environment != null) {
+            foreach (var kvp in lambdaContext.ClientContext.Environment) {
+                dictionary[kvp.Key] = kvp.Value;
+            }
         }
         
         return dictionary;

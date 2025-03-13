@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace SimpleRequest.Aws.Lambda.Runtime.Serializer;
+namespace SimpleRequest.Aws.Host.Runtime.Serializer;
 
 public static class Utf8JsonWriterExtensions {
     public static void WriteKeyValuePair(this Utf8JsonWriter writer, KeyValuePair<string, object> kvp) {
