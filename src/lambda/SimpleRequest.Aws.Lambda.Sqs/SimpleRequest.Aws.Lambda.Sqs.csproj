@@ -4,7 +4,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>True</IsPackable>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
+    <Import Project="../../build-props/nuget.props"/>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.0" />
         <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9104" />
@@ -12,6 +16,7 @@
         <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1043" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\..\host\SimpleRequest.Aws.Host.Sqs\SimpleRequest.Aws.Host.Sqs.csproj" />
       <ProjectReference Include="..\SimpleRequest.Aws.Lambda.Runtime\SimpleRequest.Aws.Lambda.Runtime.csproj" />
     </ItemGroup>
 </Project>

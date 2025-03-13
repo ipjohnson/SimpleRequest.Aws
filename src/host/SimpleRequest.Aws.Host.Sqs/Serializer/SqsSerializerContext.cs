@@ -3,7 +3,7 @@ using Amazon.Lambda.SQSEvents;
 using DependencyModules.Runtime.Attributes;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
 
-namespace SimpleRequest.Aws.Lambda.Sqs.Serializer;
+namespace SimpleRequest.Aws.Host.Sqs.Serializer;
 
 [JsonSourceGenerationOptions]
 [JsonSerializable(typeof(SQSEvent))]

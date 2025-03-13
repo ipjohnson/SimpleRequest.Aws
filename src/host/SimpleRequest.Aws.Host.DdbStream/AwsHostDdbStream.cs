@@ -3,4 +3,4 @@
 namespace SimpleRequest.Aws.Host.DdbStream;
 
 [DependencyModule]
-public partial class AwsHostDdbStream { }
+public partial class AwsHostDdbStream;

@@ -4,6 +4,7 @@ using Amazon.Lambda.SQSEvents;
 using DependencyModules.Runtime.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
+using SimpleRequest.Aws.Host.Sqs.Impl;
 using SimpleRequest.Aws.Lambda.Runtime.Context;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Runtime.Invoke;
@@ -19,8 +20,7 @@ public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
     RequestServices requestServices,
     IJsonSerializer jsonSerializer,
     LambdaContextAccessor lambdaContextAccessor,
-    ILambdaContextToHeaderMapper headerMapper,
-    SqsMessageContext sqsMessageContext)
+    ILambdaContextToHeaderMapper headerMapper)
     : ILambdaInvocationHandler {
     private readonly MemoryStream _outputStream = new ();
     private readonly MemoryStream _inputStream = new ();
@@ -34,7 +34,6 @@ public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
         
         if (sqsEvent != null) {
             foreach (var eventRecord in sqsEvent.Records) {
-                sqsMessageContext.Message = eventRecord;
                 if (!await ProcessEventRecord(
                         invocation, 
                         eventRecord,
@@ -86,6 +85,8 @@ public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
             requestServices,
             CancellationToken.None,
             scoped.ServiceProvider.GetRequiredService<IRequestLogger>());
+        
+        context.Items.Set(SqsConstants.ContextItem, eventRecord);
         
         await requestInvocationEngine.Invoke(context);
 
