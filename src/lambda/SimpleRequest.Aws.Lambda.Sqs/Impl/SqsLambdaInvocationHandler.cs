@@ -1,9 +1,11 @@
 using System.Text;
+using System.Text.Json;
 using Amazon.Lambda.RuntimeSupport;
 using Amazon.Lambda.SQSEvents;
 using DependencyModules.Runtime.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
+using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Host.Sqs.Impl;
 using SimpleRequest.Aws.Lambda.Runtime.Context;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
@@ -18,7 +20,7 @@ namespace SimpleRequest.Aws.Lambda.Sqs.Impl;
 public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
     IRequestInvocationEngine requestInvocationEngine,
     RequestServices requestServices,
-    IJsonSerializer jsonSerializer,
+    IAwsJsonSerializerOptions awsJsonSerializerOptions,
     LambdaContextAccessor lambdaContextAccessor,
     ILambdaContextToHeaderMapper headerMapper)
     : ILambdaInvocationHandler {
@@ -26,7 +28,8 @@ public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
     private readonly MemoryStream _inputStream = new ();
 
     public async Task<InvocationResponse> Invoke(InvocationRequest invocation) {
-        var sqsEvent = await jsonSerializer.Deserialize<SQSEvent>(invocation.InputStream);
+        var sqsEvent = 
+            await JsonSerializer.DeserializeAsync<SQSEvent>(invocation.InputStream, awsJsonSerializerOptions.Options);
 
         lambdaContextAccessor.LambdaContext = invocation.LambdaContext;
         var failures = new List<SQSBatchResponse.BatchItemFailure>();
@@ -44,7 +47,8 @@ public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
             }
         }
         
-        await jsonSerializer.Serialize(_outputStream, new SQSBatchResponse(failures));
+        await JsonSerializer.SerializeAsync(
+            _outputStream, new SQSBatchResponse(failures), awsJsonSerializerOptions.Options);
 
         _outputStream.Position = 0;
         
