@@ -3,9 +3,11 @@ using DependencyModules.Runtime.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
 using SimpleRequest.Aws.Lambda.Runtime.Context;
+using SimpleRequest.Runtime.Cookies;
 using SimpleRequest.Runtime.Invoke;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Logging;
+using SimpleRequest.Runtime.QueryParameters;
 
 namespace SimpleRequest.Aws.Lambda.Runtime.Impl;
 
@@ -16,7 +18,7 @@ public interface ILambdaInvocationHandler {
 [SingletonService]
 public class LambdaInvocationHandler(IServiceProvider serviceProvider,
     LambdaContextAccessor lambdaContextAccessor,
-    RequestServices requestServices,
+    DataServices requestServices,
     IRequestInvocationEngine requestInvocationEngine)
     : ILambdaInvocationHandler {
     private readonly MemoryStream _outputStream = new ();
@@ -32,9 +34,13 @@ public class LambdaInvocationHandler(IServiceProvider serviceProvider,
             invocation.InputStream, 
             "application/json", 
             new PathTokenCollection(),
-            new Dictionary<string, StringValues>());
+            new Dictionary<string, StringValues>(),
+            new QueryParametersCollection(new Dictionary<string, string>()),
+            new RequestCookies());
         
-        var responseData = new ResponseData(new Dictionary<string, StringValues>()) {
+        var responseData = new ResponseData(
+            new Dictionary<string, StringValues>(),
+            new ResponseCookies()) {
             Body = _outputStream
         };
 

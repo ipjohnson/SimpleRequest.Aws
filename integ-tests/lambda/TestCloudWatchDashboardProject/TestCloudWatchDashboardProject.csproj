@@ -1,15 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AngleSharp" Version="1.3.0-beta.468" />
         <PackageReference Include="coverlet.collector" Version="6.0.0"/>
         <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9111" />
         <PackageReference Include="DependencyModules.xUnit" Version="1.0.0-RC9111" />
@@ -24,8 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\src\lambda\SimpleRequest.Aws.Lambda.Testing\SimpleRequest.Aws.Lambda.Testing.csproj" />
-      <ProjectReference Include="..\SqsLambdaProject\SqsLambdaProject.csproj" />
+        <ProjectReference Include="..\..\..\src\lambda\SimpleRequest.Aws.Lambda.Testing\SimpleRequest.Aws.Lambda.Testing.csproj" />
+        <ProjectReference Include="..\CloudWatchDashboardProject\CloudWatchDashboardProject.csproj" />
     </ItemGroup>
 
 </Project>

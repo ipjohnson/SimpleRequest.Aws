@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="RazorBlade" Version="0.8.0" />
+        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.2" />
+        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9111" />
+        <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1050" />
+        <PackageReference Include="SimpleRequest.Web.SourceGenerator" Version="1.0.0-Beta1050" />
+        <PackageReference Include="SimpleRequest.RazorBlade" Version="1.0.0-Beta1050" />
+        <PackageReference Include="SimpleRequest.RazorBlade.SourceGenerator" Version="1.0.0-Beta1050" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\src\lambda\SimpleRequest.Aws.Lambda.CwDashboard\SimpleRequest.Aws.Lambda.CwDashboard.csproj" />
+        <ProjectReference Include="..\..\..\src\lambda\SimpleRequest.Aws.Lambda.Runtime\SimpleRequest.Aws.Lambda.Runtime.csproj" />
+    </ItemGroup>
+
+</Project>

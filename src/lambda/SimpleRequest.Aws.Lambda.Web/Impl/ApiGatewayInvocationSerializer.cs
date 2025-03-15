@@ -6,9 +6,11 @@ using DependencyModules.Runtime.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
+using SimpleRequest.Runtime.Cookies;
 using SimpleRequest.Runtime.Invoke;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Logging;
+using SimpleRequest.Runtime.QueryParameters;
 
 namespace SimpleRequest.Aws.Lambda.Web.Impl;
 
@@ -26,7 +28,7 @@ public interface IApiGatewayEventConverter {
 [SingletonService]
 public class ApiGatewayV2ProxyConverter(
     IAwsJsonSerializerOptions options ,
-    RequestServices requestServices) : IApiGatewayEventConverter {
+    DataServices requestServices) : IApiGatewayEventConverter {
 
     public Task<IRequestContext> GetContext(
         InvocationRequest request,
@@ -67,6 +69,7 @@ public class ApiGatewayV2ProxyConverter(
         if (proxyRequest == null) {
             throw new Exception("ProxyRequest is null");
         }
+        
         var requestData = MapRequestData(proxyRequest, inputStream);
         
         outputStream.SetLength(0);
@@ -75,7 +78,7 @@ public class ApiGatewayV2ProxyConverter(
         return new RequestContext(
             serviceProvider,
             requestData,
-            new ResponseData (new Dictionary<string, StringValues>()) {
+            new ResponseData (new Dictionary<string, StringValues>(), new ResponseCookies()) {
                 Body = outputStream
             },
             serviceProvider.GetRequiredService<IMetricLogger>(),
@@ -103,8 +106,18 @@ public class ApiGatewayV2ProxyConverter(
             memoryStream,
             proxyRequest.Headers.TryGetValue("Content-Type", out var contentTypeHeader) ? contentTypeHeader : "application/json",
             new PathTokenCollection(),
-            headers
+            headers,
+            new QueryParametersCollection(proxyRequest.QueryStringParameters),
+            new RequestCookies(GetCookies(proxyRequest.Cookies))
         );
+    }
+
+    private IEnumerable<KeyValuePair<string,string>> GetCookies(string[] proxyRequestCookies) {
+        foreach (var cookieString in proxyRequestCookies) {
+            var splitCookie = cookieString.Split(';');
+            var cookie = splitCookie[0].Split('=');
+            yield return new KeyValuePair<string, string>(cookie[0], cookie[1]);
+        }
     }
 
     private IDictionary<string,StringValues> MapRequestHeaders(APIGatewayHttpApiV2ProxyRequest proxyRequest) {
@@ -121,19 +134,22 @@ public class ApiGatewayV2ProxyConverter(
         MemoryStream outputStream) {
         string bodyString = "";
         
-        if (context.ResponseData.IsBinary) {
-            throw new NotImplementedException("Not implemented yet");
-        }
-        
         if (outputStream.Length > 0) {
-            bodyString = Encoding.UTF8.GetString(outputStream.ToArray());
+            var outputBytes = outputStream.ToArray();
+            if (context.ResponseData.IsBinary) {
+                bodyString = Convert.ToBase64String(outputBytes);
+            }
+            else {
+                bodyString = Encoding.UTF8.GetString(outputBytes);
+            }
         }
         
         return new APIGatewayHttpApiV2ProxyResponse {
             Body = bodyString,
             StatusCode = context.ResponseData.Status ?? 
                          GetStatusCode(context),
-            Headers = MapResponseHeaders(context)
+            Headers = MapResponseHeaders(context),
+            IsBase64Encoded = context.ResponseData.IsBinary
         };
     }
 

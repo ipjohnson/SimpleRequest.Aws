@@ -9,9 +9,11 @@ using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Host.Sqs.Impl;
 using SimpleRequest.Aws.Lambda.Runtime.Context;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
+using SimpleRequest.Runtime.Cookies;
 using SimpleRequest.Runtime.Invoke;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Logging;
+using SimpleRequest.Runtime.QueryParameters;
 using SimpleRequest.Runtime.Serializers.Json;
 
 namespace SimpleRequest.Aws.Lambda.Sqs.Impl;
@@ -19,7 +21,7 @@ namespace SimpleRequest.Aws.Lambda.Sqs.Impl;
 [SingletonService]
 public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
     IRequestInvocationEngine requestInvocationEngine,
-    RequestServices requestServices,
+    DataServices requestServices,
     IAwsJsonSerializerOptions awsJsonSerializerOptions,
     LambdaContextAccessor lambdaContextAccessor,
     ILambdaContextToHeaderMapper headerMapper)
@@ -74,10 +76,12 @@ public class SqsLambdaInvocationHandler(IServiceProvider serviceProvider,
             _inputStream, 
             contentTypeString, 
             new PathTokenCollection(), 
-            headers);
+            headers,
+            new QueryParametersCollection(new Dictionary<string, string>()),
+            new RequestCookies());
         
         var responseData = new ResponseData(
-            new Dictionary<string, StringValues>());
+            new Dictionary<string, StringValues>(), new ResponseCookies());
 
         var metrics = serviceProvider.GetRequiredService<IMetricLogger>();
         

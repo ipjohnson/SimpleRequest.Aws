@@ -1,6 +1,7 @@
 ﻿using Amazon.Lambda.RuntimeSupport;
 using DependencyModules.Runtime.Attributes;
 using DependencyModules.Runtime.Interfaces;
+using SimpleRequest.Aws.Host.Runtime;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Aws.Lambda.Runtime.Interfaces;
 using SimpleRequest.Runtime;
@@ -13,6 +14,7 @@ public partial class LambdaHostAttribute : ILambdaHostAttribute, ISimpleRequestE
 
 [DependencyModule]
 [SimpleRequestRuntime]
+[AwsHostRuntime]
 public partial class LambdaHost {
     public static void Run<T>() where T : IDependencyModule, new() {
         Run(new T());

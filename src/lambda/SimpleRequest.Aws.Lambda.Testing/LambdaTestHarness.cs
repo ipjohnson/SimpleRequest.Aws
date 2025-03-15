@@ -1,10 +1,12 @@
 using System.Reflection;
+using System.Text;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.RuntimeSupport;
 using Microsoft.Extensions.Primitives;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Aws.Lambda.Testing.Context;
+using SimpleRequest.Runtime.Cookies;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Pools;
 using SimpleRequest.Runtime.Serializers;
@@ -39,7 +41,7 @@ public class LambdaHarness(
         var response = await handler.Invoke(request);
 
         return new ResponseModel(
-            new ResponseData (new Dictionary<string, StringValues>()) 
+            new ResponseData (new Dictionary<string, StringValues>(), new ResponseCookies()) 
                 { Body = response.OutputStream },
             contentSerializer
         );
@@ -67,7 +69,20 @@ public class LambdaHarness(
     }
 
     private async Task Serialize(object payload, IPoolItemReservation<MemoryStream> memoryStream) {
-        await _serializer.Serialize(memoryStream.Item, payload);
+        if (payload is string stringPayload) {
+            await memoryStream.Item.WriteAsync(
+                Encoding.UTF8.GetBytes(stringPayload));
+        }
+        else if (payload is byte[] bytePayload){
+            await memoryStream.Item.WriteAsync(bytePayload);
+        }
+        else if (payload is Stream streamPayload){
+            await streamPayload.CopyToAsync(memoryStream.Item);
+        }
+        else {
+            await _serializer.Serialize(memoryStream.Item, payload);
+        }
+        
         memoryStream.Item.Position = 0;
     }
 }
