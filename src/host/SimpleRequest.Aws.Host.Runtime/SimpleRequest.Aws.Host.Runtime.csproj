@@ -16,7 +16,7 @@
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
         <PackageReference Include="DependencyModules.Runtime" Version="1.0.0-RC9111" />
         <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9111" />
-        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1050" />
-        <PackageReference Include="SimpleRequest.SourceGenerator" Version="1.0.0-Beta1050" />
+        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1052" />
+        <PackageReference Include="SimpleRequest.SourceGenerator" Version="1.0.0-Beta1052" />
     </ItemGroup>
 </Project>

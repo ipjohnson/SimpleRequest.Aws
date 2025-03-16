@@ -3,6 +3,7 @@ using System.Text.Json;
 using Amazon.Lambda.RuntimeSupport;
 using DependencyModules.Runtime.Attributes;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Lambda.EventBridge.Models;
@@ -23,6 +24,7 @@ public interface IEventBridgeJsonDocumentToContextMapper {
 
 [SingletonService]
 public class EventBridgeJsonDocumentToContextMapper(
+    ILogger<EventBridgeJsonDocumentToContextMapper> logger,
     IAwsJsonSerializerOptions awsJsonSerializerOptions) : IEventBridgeJsonDocumentToContextMapper {
     private readonly MemoryStream _outputStream = new ();
     private readonly MemoryStream _inputStream = new ();
@@ -32,8 +34,12 @@ public class EventBridgeJsonDocumentToContextMapper(
         _inputStream.SetLength(0);
         _outputStream.SetLength(0);
         
+        var streamReader = new StreamReader(invocation.InputStream);
+        logger.LogInformation("EventBridge input: {Input}", streamReader.ReadToEnd());
+        invocation.InputStream.Position = 0;
         var document = await JsonDocument.ParseAsync(invocation.InputStream);
         
+        logger.LogInformation("EventBridge document: {Document}", document.RootElement.GetRawText());
         var eventBridgeInfoModel = 
             document.RootElement.Deserialize<EventBridgeInfoModel>(awsJsonSerializerOptions.Options);
 
@@ -64,7 +70,7 @@ public class EventBridgeJsonDocumentToContextMapper(
         _inputStream.Position = 0;
 
         return new RequestData(
-             eventBridgeInfoModel?.Source ?? invocation.LambdaContext.FunctionName,
+             eventBridgeInfoModel?.Source ?? "unknown",
             "POST",
             _inputStream,
             "application/json",

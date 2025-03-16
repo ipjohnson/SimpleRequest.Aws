@@ -12,8 +12,8 @@
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.0" />
         <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9111" />
-        <PackageReference Include="SimpleRequest.Functions.Runtime" Version="1.0.0-Beta1050" />
-        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1050" />
+        <PackageReference Include="SimpleRequest.Functions.Runtime" Version="1.0.0-Beta1052" />
+        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1052" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\SimpleRequest.Aws.Lambda.Runtime\SimpleRequest.Aws.Lambda.Runtime.csproj" />

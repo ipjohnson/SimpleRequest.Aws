@@ -15,7 +15,7 @@
     <ItemGroup>
       <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.2" />
       <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9111" />
-      <PackageReference Include="SimpleRequest.Functions.SourceGenerator" Version="1.0.0-Beta1050" />
+      <PackageReference Include="SimpleRequest.Functions.SourceGenerator" Version="1.0.0-Beta1052" />
     </ItemGroup>
 
 </Project>
