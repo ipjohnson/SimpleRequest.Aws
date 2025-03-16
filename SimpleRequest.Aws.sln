@@ -44,6 +44,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWatchDashboardProject"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCloudWatchDashboardProject", "integ-tests\lambda\TestCloudWatchDashboardProject\TestCloudWatchDashboardProject.csproj", "{507621F6-397F-4424-B3B5-466924F68BBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleRequest.Aws.Lambda.EventBridge", "src\lambda\SimpleRequest.Aws.Lambda.EventBridge\SimpleRequest.Aws.Lambda.EventBridge.csproj", "{B568736E-AD29-4160-86D3-986A29032367}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBridgeLambdaProject", "integ-tests\lambda\EventBridgeLambdaProject\EventBridgeLambdaProject.csproj", "{F91612BB-DC37-4BBF-B1BB-7A33CBCE8F90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaFunctionProject", "integ-tests\lambda\LambdaFunctionProject\LambdaFunctionProject.csproj", "{78FD794C-BC5B-4B31-A20D-4533D2E36CC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +76,9 @@ Global
 		{523A9804-7D0D-4EAB-A993-02285834F121} = {BCC9187A-6857-4CA3-A91B-61C587E031E3}
 		{B29F4A68-696D-4B25-87ED-085E891EE4AF} = {EB81C99A-F19D-458C-8D5F-C9F7B9937C2D}
 		{507621F6-397F-4424-B3B5-466924F68BBD} = {EB81C99A-F19D-458C-8D5F-C9F7B9937C2D}
+		{B568736E-AD29-4160-86D3-986A29032367} = {BCC9187A-6857-4CA3-A91B-61C587E031E3}
+		{F91612BB-DC37-4BBF-B1BB-7A33CBCE8F90} = {EB81C99A-F19D-458C-8D5F-C9F7B9937C2D}
+		{78FD794C-BC5B-4B31-A20D-4533D2E36CC4} = {EB81C99A-F19D-458C-8D5F-C9F7B9937C2D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{93106B06-DEAD-4374-BB9B-9E9A297DB247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -136,5 +145,17 @@ Global
 		{507621F6-397F-4424-B3B5-466924F68BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{507621F6-397F-4424-B3B5-466924F68BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{507621F6-397F-4424-B3B5-466924F68BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B568736E-AD29-4160-86D3-986A29032367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B568736E-AD29-4160-86D3-986A29032367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B568736E-AD29-4160-86D3-986A29032367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B568736E-AD29-4160-86D3-986A29032367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91612BB-DC37-4BBF-B1BB-7A33CBCE8F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91612BB-DC37-4BBF-B1BB-7A33CBCE8F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91612BB-DC37-4BBF-B1BB-7A33CBCE8F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91612BB-DC37-4BBF-B1BB-7A33CBCE8F90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FD794C-BC5B-4B31-A20D-4533D2E36CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FD794C-BC5B-4B31-A20D-4533D2E36CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FD794C-BC5B-4B31-A20D-4533D2E36CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FD794C-BC5B-4B31-A20D-4533D2E36CC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

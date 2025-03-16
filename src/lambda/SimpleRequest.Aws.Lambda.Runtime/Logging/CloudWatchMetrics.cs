@@ -11,8 +11,8 @@ public class CloudWatchMetrics(ICloudWatchMetricSerializer cloudWatchSerializer)
     
     private ImmutableList<KeyValuePair<string, object>> _tags = ImmutableList<KeyValuePair<string, object>>.Empty;
     private ImmutableList<KeyValuePair<string, object>> _data = ImmutableList<KeyValuePair<string, object>>.Empty;
-    private List<MetricValue> _values = new ();
-    private List<MetricValue> _timers = new ();
+    private readonly List<MetricValue> _values = new ();
+    private readonly List<MetricValue> _timers = new ();
 
     public Task Flush() {
         if (_values.Count > 0) {

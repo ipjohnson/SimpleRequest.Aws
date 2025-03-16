@@ -11,7 +11,7 @@ public interface ISharedInvokeParameters {
 
 [SingletonService]
 public class SharedInvokeParameters : ISharedInvokeParameters {
-    private List<object[]> _parameterSets = new ();
+    private readonly List<object[]> _parameterSets = new ();
 
     public void Add(params object[] parameters) {
         _parameterSets.Add(parameters);

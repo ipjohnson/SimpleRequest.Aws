@@ -24,8 +24,8 @@ public interface IJsonDocumentToContextMapper {
 public class JsonDocumentToContextMapper(
     IAwsJsonSerializerOptions serializerOptions,
     DataServices dataServices) : IJsonDocumentToContextMapper {
-    private MemoryStream _inbound = new();
-    private MemoryStream _outbound = new();
+    private readonly MemoryStream _inbound = new();
+    private readonly MemoryStream _outbound = new();
 
     public IRequestContext MapToContext(JsonDocument document, IServiceProvider serviceProvider) {
         var widgetContext = document.RootElement.GetProperty("widgetContext");

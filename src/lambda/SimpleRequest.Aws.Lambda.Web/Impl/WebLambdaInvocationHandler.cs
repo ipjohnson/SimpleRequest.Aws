@@ -15,8 +15,8 @@ public class WebLambdaInvocationHandler(
     IRequestInvocationEngine invocationEngine,
     LambdaContextAccessor lambdaContextAccessor,
     IContextAccessor? contextAccessor = null) : ILambdaInvocationHandler {
-    private MemoryStream _inputStream = new();
-    private MemoryStream _outputStream = new();
+    private readonly MemoryStream _inputStream = new();
+    private readonly MemoryStream _outputStream = new();
     
     public async Task<InvocationResponse> Invoke(InvocationRequest invocation) {
         await using var scope = serviceProvider.CreateAsyncScope();

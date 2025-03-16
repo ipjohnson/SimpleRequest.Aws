@@ -21,11 +21,11 @@ public class LambdaHarness(
     ILambdaInvocationHandler handler,
     IMemoryStreamPool memoryStreamPool,
     IContentSerializerManager contentSerializer) {
-    private static ConstructorInfo? _constructorInfo = 
+    private static readonly ConstructorInfo? _constructorInfo = 
         typeof(InvocationRequest).GetConstructor( BindingFlags.NonPublic | BindingFlags.Instance, Array.Empty<Type>());
-    private static PropertyInfo? _context = typeof(InvocationRequest).GetProperty("LambdaContext");
-    private static PropertyInfo? _inputStream = typeof(InvocationRequest).GetProperty("InputStream");
-    private SystemTextJsonSerializer _serializer = new (options.Options);
+    private static readonly PropertyInfo? _context = typeof(InvocationRequest).GetProperty("LambdaContext");
+    private static readonly PropertyInfo? _inputStream = typeof(InvocationRequest).GetProperty("InputStream");
+    private readonly SystemTextJsonSerializer _serializer = new (options.Options);
     
     public IServiceProvider ServiceProvider => serviceProvider;
 

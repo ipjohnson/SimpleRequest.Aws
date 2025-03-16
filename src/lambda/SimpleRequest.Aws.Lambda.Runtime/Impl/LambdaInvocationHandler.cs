@@ -38,6 +38,8 @@ public class LambdaInvocationHandler(IServiceProvider serviceProvider,
             new QueryParametersCollection(new Dictionary<string, string>()),
             new RequestCookies());
         
+        _outputStream.SetLength(0);
+        
         var responseData = new ResponseData(
             new Dictionary<string, StringValues>(),
             new ResponseCookies()) {
@@ -54,8 +56,6 @@ public class LambdaInvocationHandler(IServiceProvider serviceProvider,
             requestServices,
             CancellationToken.None,
             scoped.ServiceProvider.GetRequiredService<IRequestLogger>());
-        
-        _outputStream.Position = 0;
         
         await requestInvocationEngine.Invoke(context);
         

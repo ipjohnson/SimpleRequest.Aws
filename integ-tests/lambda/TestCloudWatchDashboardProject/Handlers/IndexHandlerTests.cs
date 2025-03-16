@@ -14,6 +14,6 @@ public class IndexHandlerTests {
         
     }
 
-    private string _testPayload =
+    private readonly string _testPayload =
         "{\"widgetContext\":{\"dashboardName\":\"custom-dashboard\",\"widgetId\":\"widget-9\",\"domain\":\"https://us-east-1.console.aws.amazon.com\",\"accountId\":\"203918866336\",\"locale\":\"en\",\"timezone\":{\"label\":\"UTC\",\"offsetISO\":\"+00:00\",\"offsetInMinutes\":0},\"period\":300,\"isAutoPeriod\":true,\"timeRange\":{\"mode\":\"relative\",\"start\":1741989935213,\"end\":1742000735213,\"relativeStart\":10800002},\"theme\":\"light\",\"linkCharts\":true,\"title\":null,\"params\":null,\"forms\":{\"all\":{}},\"width\":344,\"height\":234}}";
 }
