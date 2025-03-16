@@ -22,7 +22,7 @@ public class CloudWatchMetricSerializer(
     ICloudWatchNamespaceProvider namespaceProvider,
     ICloudWatchDimensionSetProvider dimensionSetProvider,
     IMemoryStreamPool memoryStreamPool,
-    ILoggingContextAccessor? contextAccessor) : ICloudWatchMetricSerializer {
+    ILoggingContextAccessor? contextAccessor = null) : ICloudWatchMetricSerializer {
     private const int MaxValuesPerString = 100;
 
     public IReadOnlyList<string> GetSerializedLines(

@@ -16,7 +16,6 @@
         <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1050" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\host\SimpleRequest.Aws.Host.Sqs\SimpleRequest.Aws.Host.Sqs.csproj" />
         <ProjectReference Include="..\SimpleRequest.Aws.Lambda.Runtime\SimpleRequest.Aws.Lambda.Runtime.csproj" />
     </ItemGroup>
     <ItemGroup>
