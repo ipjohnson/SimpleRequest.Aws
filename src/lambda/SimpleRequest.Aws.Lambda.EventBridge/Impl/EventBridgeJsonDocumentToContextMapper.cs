@@ -37,7 +37,7 @@ public class EventBridgeJsonDocumentToContextMapper(
         var eventBridgeInfoModel = 
             document.RootElement.Deserialize<EventBridgeInfoModel>(awsJsonSerializerOptions.Options);
 
-        var request = CreateRequestData(invocation, document);
+        var request = CreateRequestData(invocation, document,eventBridgeInfoModel);
         var response = new ResponseData(
             new Dictionary<string, StringValues>(),
             new ResponseCookies()) {
@@ -55,8 +55,7 @@ public class EventBridgeJsonDocumentToContextMapper(
         );
     }
 
-    private IRequestData CreateRequestData(
-        InvocationRequest invocation, JsonDocument document) {
+    private IRequestData CreateRequestData(InvocationRequest invocation, JsonDocument document, EventBridgeInfoModel? eventBridgeInfoModel) {
         
         if (document.RootElement.TryGetProperty("detail", out var detail)) {
             detail.WriteTo(new Utf8JsonWriter(_inputStream));
@@ -65,7 +64,7 @@ public class EventBridgeJsonDocumentToContextMapper(
         _inputStream.Position = 0;
 
         return new RequestData(
-            invocation.LambdaContext.FunctionName,
+             eventBridgeInfoModel?.Source ?? invocation.LambdaContext.FunctionName,
             "POST",
             _inputStream,
             "application/json",
