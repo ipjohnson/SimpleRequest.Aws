@@ -12,10 +12,10 @@
 
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.DynamoDBEvents" Version="3.1.1" />
-        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9111" />
-        <PackageReference Include="SimpleRequest.Functions.Runtime" Version="1.0.0-Beta1052" />
-        <PackageReference Include="SimpleRequest.Functions.SourceGenerator" Version="1.0.0-Beta1052" />
-        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1052" />
+        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9120" />
+        <PackageReference Include="SimpleRequest.Functions.Runtime" Version="1.0.0-Beta1058" />
+        <PackageReference Include="SimpleRequest.Functions.SourceGenerator" Version="1.0.0-Beta1058" />
+        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1058" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\SimpleRequest.Aws.Host.Runtime\SimpleRequest.Aws.Host.Runtime.csproj" />

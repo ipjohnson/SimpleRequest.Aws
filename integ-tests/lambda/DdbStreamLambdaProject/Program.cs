@@ -1,4 +1,9 @@
 using DdbStreamLambdaProject;
+using SimpleRequest.Aws.Lambda.DdbStream;
 using SimpleRequest.Aws.Lambda.Runtime;
+using SimpleRequest.Runtime;
 
-LambdaHost.Run<Application>();
+[assembly: DdbStreamLambda]
+[assembly: EnhancedLoggingSupport]
+
+LambdaHost.Run<ApplicationModule>();

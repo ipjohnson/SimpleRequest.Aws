@@ -1,6 +1,9 @@
 ﻿using CloudWatchDashboardProject;
+using SimpleRequest.Aws.Lambda.CwDashboard;
 using SimpleRequest.Aws.Lambda.Runtime;
+using SimpleRequest.RazorBlade;
 
-await Test.Main();
+[assembly: CloudWatchLambda]
+[assembly: RazorBladeRuntime]
 
-LambdaHost.Run<Application>();
+LambdaHost.Run<ApplicationModule>();

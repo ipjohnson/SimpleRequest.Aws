@@ -14,10 +14,10 @@
         <PackageReference Include="Amazon.Lambda.Core" Version="2.5.0"/>
         <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.2" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
-        <PackageReference Include="DependencyModules.Runtime" Version="1.0.0-RC9111" />
-        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9111" />
-        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1052" />
-        <PackageReference Include="SimpleRequest.SourceGenerator" Version="1.0.0-Beta1052" />
+        <PackageReference Include="DependencyModules.Runtime" Version="1.0.0-RC9120" />
+        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9120" />
+        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1058" />
+        <PackageReference Include="SimpleRequest.SourceGenerator" Version="1.0.0-Beta1058" />
     </ItemGroup>
 
     <ItemGroup>

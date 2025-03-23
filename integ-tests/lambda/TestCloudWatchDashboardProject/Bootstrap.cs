@@ -1,5 +1,5 @@
 ﻿using CloudWatchDashboardProject;
 using DependencyModules.xUnit.NSubstitute;
 
-[assembly: Application]
+[assembly: CloudWatchDashboardProject.ApplicationModule]
 [assembly: NSubstituteSupport]

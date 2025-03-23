@@ -1,4 +1,9 @@
 ﻿using SimpleRequest.Aws.Lambda.Runtime;
+using SimpleRequest.Aws.Lambda.Web;
+using SimpleRequest.Runtime;
 using WebLambdaProject;
 
-LambdaHost.Run<Application>();
+[assembly: WebLambda]
+[assembly: EnhancedLoggingSupport]
+
+LambdaHost.Run<ApplicationModule>();

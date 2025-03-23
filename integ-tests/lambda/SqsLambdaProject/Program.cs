@@ -1,4 +1,8 @@
 using SimpleRequest.Aws.Lambda.Runtime;
-using SqsLambdaProject;
+using SimpleRequest.Aws.Lambda.Sqs;
+using SimpleRequest.Runtime;
 
-LambdaHost.Run<Application>();
+[assembly: SqsLambda]
+[assembly: EnhancedLoggingSupport]
+
+LambdaHost.Run<SqsLambdaProject.ApplicationModule>();
