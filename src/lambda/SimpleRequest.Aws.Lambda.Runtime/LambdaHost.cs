@@ -1,8 +1,10 @@
 ﻿using Amazon.Lambda.RuntimeSupport;
+using DependencyModules.Runtime;
 using DependencyModules.Runtime.Attributes;
 using DependencyModules.Runtime.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using SimpleRequest.Aws.Host.Runtime;
-using SimpleRequest.Aws.Lambda.Runtime.Impl;
+using SimpleRequest.Aws.Lambda.Runtime.Host;
 using SimpleRequest.Aws.Lambda.Runtime.Interfaces;
 using SimpleRequest.Runtime;
 using SimpleRequest.Runtime.Attributes;
@@ -21,9 +23,20 @@ public partial class LambdaHost {
     }
 
     public static void Run(params IDependencyModule[] modules) {
-        var asyncResult = new LambdaBootstrap(
-            new LambdaBootstrapInstance(modules).Bootstrap).RunAsync();
+        var serviceProvider = CreateServiceProvider(modules);
+
+        var host = serviceProvider.GetRequiredService<ILambdaHostInstance>();
         
-        asyncResult.Wait();
+        host.Run();
+    }
+
+    private static ServiceProvider CreateServiceProvider(IDependencyModule[] modules) {
+        var collection = new ServiceCollection();
+        
+        collection.AddModules(modules);
+        
+        var serviceProvider = collection.BuildServiceProvider();
+        
+        return serviceProvider;
     }
 }
