@@ -6,6 +6,7 @@ using Microsoft.Extensions.Primitives;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
 using SimpleRequest.Aws.Lambda.Runtime.Impl;
 using SimpleRequest.Aws.Lambda.Testing.Context;
+using SimpleRequest.Runtime.Compression;
 using SimpleRequest.Runtime.Cookies;
 using SimpleRequest.Runtime.Invoke.Impl;
 using SimpleRequest.Runtime.Pools;
@@ -16,6 +17,7 @@ using SimpleRequest.Testing;
 namespace SimpleRequest.Aws.Lambda.Testing;
 
 public class LambdaHarness(
+    IStreamCompressionService streamCompressionService,
     IAwsJsonSerializerOptions options,
     IServiceProvider serviceProvider,
     ILambdaInvocationHandler handler,
@@ -41,6 +43,8 @@ public class LambdaHarness(
         var response = await handler.Invoke(request);
 
         return new ResponseModel(
+            streamCompressionService,
+            serviceProvider,
             new ResponseData (new Dictionary<string, StringValues>(), new ResponseCookies()) 
                 { Body = response.OutputStream },
             contentSerializer

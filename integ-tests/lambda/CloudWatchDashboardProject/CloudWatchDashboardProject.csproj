@@ -10,11 +10,11 @@
     <ItemGroup>
         <PackageReference Include="RazorBlade" Version="0.8.0" />
         <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.12.2" />
-        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9120" />
-        <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1058" />
-        <PackageReference Include="SimpleRequest.Web.SourceGenerator" Version="1.0.0-Beta1058" />
-        <PackageReference Include="SimpleRequest.RazorBlade" Version="1.0.0-Beta1058" />
-        <PackageReference Include="SimpleRequest.RazorBlade.SourceGenerator" Version="1.0.0-Beta1058" />
+        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9121" />
+        <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1060" />
+        <PackageReference Include="SimpleRequest.Web.SourceGenerator" Version="1.0.0-Beta1060" />
+        <PackageReference Include="SimpleRequest.RazorBlade" Version="1.0.0-Beta1060" />
+        <PackageReference Include="SimpleRequest.RazorBlade.SourceGenerator" Version="1.0.0-Beta1060" />
     </ItemGroup>
 
     <ItemGroup>

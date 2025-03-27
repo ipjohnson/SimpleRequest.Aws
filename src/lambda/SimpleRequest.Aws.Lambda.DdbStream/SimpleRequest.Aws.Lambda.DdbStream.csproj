@@ -11,10 +11,10 @@
     <Import Project="../../build-props/nuget.props"/>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.DynamoDBEvents" Version="3.1.1" />
-        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9120" />
-        <PackageReference Include="SimpleRequest.Functions.Runtime" Version="1.0.0-Beta1058" />
-        <PackageReference Include="SimpleRequest.Functions.SourceGenerator" Version="1.0.0-Beta1058" />
-        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1058" />
+        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9121" />
+        <PackageReference Include="SimpleRequest.Functions.Runtime" Version="1.0.0-Beta1060" />
+        <PackageReference Include="SimpleRequest.Functions.SourceGenerator" Version="1.0.0-Beta1060" />
+        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1060" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\host\SimpleRequest.Aws.Host.DdbStream\SimpleRequest.Aws.Host.DdbStream.csproj" />
