@@ -2,5 +2,5 @@
 
 namespace SimpleRequest.Aws.Host.Runtime;
 
-[DependencyModule]
+[DependencyModule(GenerateFactories = true)]
 public partial class AwsHostRuntime;

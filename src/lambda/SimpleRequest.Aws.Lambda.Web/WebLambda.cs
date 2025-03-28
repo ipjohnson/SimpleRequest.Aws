@@ -5,7 +5,7 @@ using SimpleRequest.Web.Runtime;
 
 namespace SimpleRequest.Aws.Lambda.Web;
 
-[DependencyModule]
+[DependencyModule(GenerateFactories = true)]
 [SimpleRequestWeb]
 [LambdaHost]
 public partial class WebLambda {

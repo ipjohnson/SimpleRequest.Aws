@@ -14,7 +14,7 @@ namespace SimpleRequest.Aws.Lambda.Runtime;
 
 public partial class LambdaHostAttribute : ILambdaHostAttribute, ISimpleRequestEntryAttribute;
 
-[DependencyModule]
+[DependencyModule(GenerateFactories = true)]
 [SimpleRequestRuntime]
 [AwsHostRuntime]
 public partial class LambdaHost {
