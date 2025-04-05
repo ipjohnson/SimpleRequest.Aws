@@ -84,7 +84,7 @@ public class LambdaHarness(
             await streamPayload.CopyToAsync(memoryStream.Item);
         }
         else {
-            await _serializer.Serialize(memoryStream.Item, payload);
+            await _serializer.SerializeAsync(memoryStream.Item, payload);
         }
         
         memoryStream.Item.Position = 0;

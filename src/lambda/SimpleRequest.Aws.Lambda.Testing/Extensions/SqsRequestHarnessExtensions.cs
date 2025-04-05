@@ -23,7 +23,7 @@ public static class SqsRequestHarnessExtensions {
         return requestHarness.Invoke( new SQSEvent { Records = messages.ToList() }, handlerName);
     }
 
-    public static async Task AssertNoFailures(this ResponseModel response) {
+    public static async Task AssertNoFailures(this IResponseModel response) {
         response.AssertOk();
         var batchResponse = await response.Get<SQSBatchResponse>();
 

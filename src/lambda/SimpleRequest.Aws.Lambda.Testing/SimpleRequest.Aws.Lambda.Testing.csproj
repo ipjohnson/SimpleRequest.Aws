@@ -11,8 +11,8 @@
     <Import Project="../../build-props/nuget.props"/>
 
     <ItemGroup>
-      <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1062" />
-      <PackageReference Include="SimpleRequest.Testing" Version="1.0.0-Beta1060" />
+      <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1065" />
+      <PackageReference Include="SimpleRequest.Testing" Version="1.0.0-Beta1065" />
     </ItemGroup>
 
     <ItemGroup>

@@ -21,7 +21,6 @@ public class LambdaRequestHeaderMapper(
     private MemoryStream _memoryStream = new ();
     
     public async Task<(IRequestData, ILambdaContext?)> MapRequestData(HttpResponseMessage response) {
-        var body = response.Content.ReadAsStream();
         var request = await JsonSerializer.DeserializeAsync<APIGatewayHttpApiV2ProxyRequest>(
             response.Content.ReadAsStream(), options.Options);
 

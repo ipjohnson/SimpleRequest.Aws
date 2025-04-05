@@ -3,7 +3,7 @@ using Amazon.Lambda.APIGatewayEvents;
 using DependencyModules.Runtime.Attributes;
 using SimpleRequest.Aws.Host.Runtime.Serializer;
 
-namespace SimpleRequest.Aws.Lambda.Responsive;
+namespace SimpleRequest.Aws.Lambda.Responsive.Serializer;
 
 [JsonSourceGenerationOptions]
 [JsonSerializable(typeof(APIGatewayHttpApiV2ProxyRequest))]

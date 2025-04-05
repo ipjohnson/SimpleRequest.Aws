@@ -13,7 +13,7 @@ public class LambdaHttpClientProvider(LambdaEnvironment lambdaEnvironment) : ILa
     
     public HttpClient GetClient() {
         return _client ??= new HttpClient {
-            BaseAddress = //new Uri("http://localhost:9090")
+            BaseAddress = //new Uri("http://localhost:9090"),
                 new Uri("http://" + lambdaEnvironment.RuntimeServerHostAndPort),
             Timeout = TimeSpan.FromDays(1)
         };

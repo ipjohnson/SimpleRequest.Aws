@@ -15,7 +15,7 @@
 
     <ItemGroup>
       <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.7.1" />
-      <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1062" />
+      <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1065" />
     </ItemGroup>
 
 </Project>

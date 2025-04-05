@@ -14,11 +14,9 @@ public interface ILambdaInvokeEngine {
 
 [SingletonService]
 public class LambdaInvokeEngine: ILambdaInvokeEngine {
-    private object _lock = new ();
     private readonly IStringBuilderPool _stringBuilderPool;
     private readonly ILambdaServerProxy _lambdaServerProxy;
     private readonly IRequestInvocationEngine _invocationEngine;
-    private readonly byte[] _nullBytes = "\0\0\0\0\0\0\0\0"u8.ToArray();
 
     public LambdaInvokeEngine(
         IStringBuilderPool stringBuilderPool,
@@ -90,28 +88,25 @@ public class LambdaInvokeEngine: ILambdaInvokeEngine {
         }
         
         var responseHeader = new ResponseHeader(
-            context.ResponseData.Status ?? GetStatus(context),
+            context.ResponseData.Status ?? 200,
             context.ResponseData.Headers.ToDictionary(pair => pair.Key, pair => pair.Value.ToString()),
             cookies.Select(cookie => cookie));
 
+        if (context.ResponseData.ContentType != null) {
+            responseHeader.Headers["Content-Type"] = context.ResponseData.ContentType;
+        }
+        
         var outputStream = _outputPipe.Writer.AsStream(true);
         
         JsonSerializer.Serialize(outputStream, responseHeader);
-        outputStream.Write(_nullBytes);
-    }
-
-    private int GetStatus(IRequestContext context) {
-        return context.ResponseData.Status ?? 200;
+        outputStream.Write("\0\0\0\0\0\0\0\0"u8);
     }
 
     private void BeginResponse(IRequestContext context) {
-        lock (_lock) {
-            if (_responseTask == null) {
-                _responseTask = Task.Run(
-                    () => _lambdaServerProxy.SendResponse(context, _outputPipe.Reader));
-                Console.WriteLine("Response task started");
-            }
-        }
+        Console.WriteLine("Begin response");
+        _responseTask = Task.Run(
+            () => _lambdaServerProxy.SendResponse(context, _outputPipe.Reader));
+        Console.WriteLine("Response task started");
     }
 }
 

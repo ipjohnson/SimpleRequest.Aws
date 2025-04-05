@@ -20,18 +20,19 @@ public class ResponseStream(
     }
 
     public override async ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = new CancellationToken()) {
+        Console.WriteLine("Write async");
+        
         if (!_headersWritten) {
             _headersWritten = true;
             writeHeaders(requestContext);
         }
         
-        var results = 
-            await pipeWriter.WriteAsync(buffer, cancellationToken);
-        
         if (!_beginResponse) {
             _beginResponse = true;
             beginResponse(requestContext);
         }
+        
+        await pipeWriter.WriteAsync(buffer, cancellationToken);
         
         await pipeWriter.FlushAsync(cancellationToken);
     }
