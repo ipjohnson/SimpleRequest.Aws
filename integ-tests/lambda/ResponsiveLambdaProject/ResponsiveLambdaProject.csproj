@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1065" />
+        <PackageReference Include="SimpleRequest.Web.SourceGenerator" Version="1.0.0-Beta1065" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\src\lambda\SimpleRequest.Aws.Lambda.Responsive\SimpleRequest.Aws.Lambda.Responsive.csproj" />
+    </ItemGroup>
+
+</Project>

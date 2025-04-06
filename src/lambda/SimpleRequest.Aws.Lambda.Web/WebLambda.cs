@@ -8,6 +8,4 @@ namespace SimpleRequest.Aws.Lambda.Web;
 [DependencyModule(GenerateFactories = true)]
 [SimpleRequestWeb]
 [LambdaHost]
-public partial class WebLambda {
-    public partial class Attribute : ISimpleRequestEntryAttribute;
-}
+public partial class WebLambda;

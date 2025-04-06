@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaFunctionProject", "in
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleRequest.Aws.Lambda.Responsive", "src\lambda\SimpleRequest.Aws.Lambda.Responsive\SimpleRequest.Aws.Lambda.Responsive.csproj", "{51B74027-43D6-4117-A6ED-F26F5B45699B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsiveLambdaProject", "integ-tests\lambda\ResponsiveLambdaProject\ResponsiveLambdaProject.csproj", "{DC87FEE1-93B9-4107-A3B8-EB49B56839E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,7 @@ Global
 		{B568736E-AD29-4160-86D3-986A29032367} = {BCC9187A-6857-4CA3-A91B-61C587E031E3}
 		{78FD794C-BC5B-4B31-A20D-4533D2E36CC4} = {EB81C99A-F19D-458C-8D5F-C9F7B9937C2D}
 		{51B74027-43D6-4117-A6ED-F26F5B45699B} = {BCC9187A-6857-4CA3-A91B-61C587E031E3}
+		{DC87FEE1-93B9-4107-A3B8-EB49B56839E3} = {EB81C99A-F19D-458C-8D5F-C9F7B9937C2D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{93106B06-DEAD-4374-BB9B-9E9A297DB247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -157,5 +160,9 @@ Global
 		{51B74027-43D6-4117-A6ED-F26F5B45699B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51B74027-43D6-4117-A6ED-F26F5B45699B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51B74027-43D6-4117-A6ED-F26F5B45699B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC87FEE1-93B9-4107-A3B8-EB49B56839E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC87FEE1-93B9-4107-A3B8-EB49B56839E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC87FEE1-93B9-4107-A3B8-EB49B56839E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC87FEE1-93B9-4107-A3B8-EB49B56839E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
