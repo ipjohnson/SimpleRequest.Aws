@@ -1,5 +1,4 @@
-﻿
-using ResponsiveLambdaProject;
+﻿using ResponsiveLambdaProject;
 using SimpleRequest.Aws.Lambda.Responsive;
 using SimpleRequest.Aws.Lambda.Runtime;
 

@@ -1,6 +1,6 @@
+using SimpleRequest.Models.Attributes;
 using SimpleRequest.Runtime.Attributes;
 using SimpleRequest.Runtime.Models;
-using SimpleRequest.Web.Runtime.Attributes;
 
 namespace ResponsiveLambdaProject.Handlers;
 

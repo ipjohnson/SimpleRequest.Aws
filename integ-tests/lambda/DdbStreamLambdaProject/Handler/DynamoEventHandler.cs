@@ -1,7 +1,7 @@
 using Amazon.Lambda.DynamoDBEvents;
 using Microsoft.Extensions.Logging;
 using SimpleRequest.Aws.Host.DdbStream.Attributes;
-using SimpleRequest.Functions.Runtime.Attributes;
+using SimpleRequest.Models.Attributes;
 
 namespace DdbStreamLambdaProject.Handler;
 

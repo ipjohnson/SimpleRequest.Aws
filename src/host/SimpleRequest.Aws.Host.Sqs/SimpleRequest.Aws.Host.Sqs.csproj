@@ -11,10 +11,9 @@
     <Import Project="../../build-props/nuget.props"/>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.0" />
-        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9130" />
-        <PackageReference Include="SimpleRequest.Functions.Runtime" Version="1.0.0-Beta1065" />
-        <PackageReference Include="SimpleRequest.Functions.SourceGenerator" Version="1.0.0-Beta1065" />
-        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1065" />
+        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9138" />
+        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1072" />
+        <PackageReference Include="SimpleRequest.SourceGenerator" Version="1.0.0-Beta1072" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\SimpleRequest.Aws.Host.Runtime\SimpleRequest.Aws.Host.Runtime.csproj" />

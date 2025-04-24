@@ -8,8 +8,8 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="SimpleRequest.Web.Runtime" Version="1.0.0-Beta1065" />
-        <PackageReference Include="SimpleRequest.Web.SourceGenerator" Version="1.0.0-Beta1065" />
+        <PackageReference Include="SimpleRequest.Runtime" Version="1.0.0-Beta1072" />
+        <PackageReference Include="SimpleRequest.SourceGenerator" Version="1.0.0-Beta1072" />
     </ItemGroup>
     
     <ItemGroup>

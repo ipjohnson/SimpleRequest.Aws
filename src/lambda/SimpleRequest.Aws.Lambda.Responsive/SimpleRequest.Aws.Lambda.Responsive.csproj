@@ -15,8 +15,8 @@
       <ProjectReference Include="..\SimpleRequest.Aws.Lambda.Web\SimpleRequest.Aws.Lambda.Web.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="DependencyModules.Runtime" Version="1.0.0-RC9130" />
-        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9130" />
+        <PackageReference Include="DependencyModules.Runtime" Version="1.0.0-RC9138" />
+        <PackageReference Include="DependencyModules.SourceGenerator" Version="1.0.0-RC9138" />
         <PackageReference Include="System.IO.Pipelines" Version="8.0.0" />
         <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.7.1" />
     </ItemGroup>

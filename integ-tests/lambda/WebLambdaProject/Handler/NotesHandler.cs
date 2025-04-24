@@ -1,4 +1,4 @@
-using SimpleRequest.Web.Runtime.Attributes;
+using SimpleRequest.Models.Attributes;
 using WebLambdaProject.Models;
 
 namespace WebLambdaProject.Handler;

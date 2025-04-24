@@ -1,12 +1,14 @@
 using Microsoft.Extensions.Logging;
-using SimpleRequest.Functions.Runtime.Attributes;
+using SimpleRequest.Models.Attributes;
 using SqsLambdaProject.Model;
 using SqsLambdaProject.Services;
 
 namespace SqsLambdaProject.Handler;
 
 
-public class SqsHandler(ISharedInvokeParameters sharedInvokeParameters, ILogger<SqsHandler> logger) {
+public class SqsHandler(
+    ISharedInvokeParameters sharedInvokeParameters,
+    ILogger<SqsHandler> logger) {
     
     [Function(Name = "sqs-handler")]
     public async Task Handler(SimpleRecordInput input) {
