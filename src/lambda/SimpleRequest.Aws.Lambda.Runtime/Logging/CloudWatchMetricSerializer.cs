@@ -155,7 +155,8 @@ public class CloudWatchMetricSerializer(
                     utf8JsonWriter.WriteBooleanValue(boolValue);
                     break;
                 default:
-                    utf8JsonWriter.WriteStringValue(valuePair.Value.ToString());
+                    utf8JsonWriter.WriteStringValue(valuePair.Value?.ToString() ?? "");
+                    
                     break;
             }
         }

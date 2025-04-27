@@ -15,7 +15,7 @@ public interface ILambdaInvocationHandler {
     Task<InvocationResponse> Invoke(InvocationRequest invocation);
 }
 
-[SingletonService]
+[SingletonService(Using = RegistrationType.Try)]
 public class LambdaInvocationHandler(IServiceProvider serviceProvider,
     LambdaContextAccessor lambdaContextAccessor,
     DataServices requestServices,
